@@ -23,7 +23,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/whoAmI", method = RequestMethod.GET)
-    public User findByName(@CookieValue(value = "SAML_TOKEN") String samlToken) {
+    public User findByName(@CookieValue(value = "SAML_ASSERTION") String samlToken) {
         logger.info("Cookie: " + samlToken);
         TokenValidator tokenValidator = new TokenValidator();
         if (tokenValidator.isTokenValid(samlToken)) {
